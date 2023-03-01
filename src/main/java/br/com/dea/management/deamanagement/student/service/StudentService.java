@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -16,11 +17,15 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public List<Student>findAllStudents(){
+    public List<Student> findAllStudents(){
         return this.studentRepository.findAll();
     }
 
     public Page<Student> findAllStudentsPaginated(Integer page, Integer pageSize){
         return this.studentRepository.findAllPaginated(PageRequest.of(page, pageSize));
+    }
+
+    public Optional<Student> findStudentById(Long id) {
+        return this.studentRepository.findById(id);
     }
 }
