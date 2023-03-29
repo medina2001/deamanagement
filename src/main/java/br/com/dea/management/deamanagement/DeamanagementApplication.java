@@ -8,6 +8,9 @@ import br.com.dea.management.deamanagement.user.service.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +21,13 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
+@OpenAPIDefinition(
+		info = @Info(title = "Dea Management", version = "1.0", description = "Dea Management API Description"),
+		servers = {
+				@Server(url = "http://localhost:8082${server.servlet.contextPath}", description = "Local environment URL"),
+				@Server(url = "https://deamanagement.com.br${server.servlet.contextPath}", description = "Development environment URL")
+		}
+)
 public class DeamanagementApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
